@@ -37,9 +37,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderCategoryOptions() {
     if (!categoryFilter) return;
-    categoryFilter.innerHTML = '<option value="">All</option>';
+    // Clear existing options
+    categoryFilter.innerHTML = '';
+
+    // Add "All" option
+    const allOption = document.createElement("option");
+    allOption.value = "";
+    allOption.textContent = "All";
+    categoryFilter.appendChild(allOption);
+
+    // Add options for each category
     Array.from(categories).forEach((cat) => {
-      categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
+      const option = document.createElement("option");
+      option.value = cat;
+      option.textContent = cat;
+      categoryFilter.appendChild(option);
     });
   }
 
