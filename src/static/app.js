@@ -133,9 +133,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderActivitySelect() {
     if (!activitySelect) return;
-    activitySelect.innerHTML = '<option value="">-- Select an activity --</option>';
+    activitySelect.innerHTML = ""; // Clear existing options
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "-- Select an activity --";
+    activitySelect.appendChild(defaultOption);
     Object.keys(allActivities).forEach((name) => {
-      activitySelect.innerHTML += `<option value="${name}">${name}</option>`;
+      const option = document.createElement("option");
+      option.value = name;
+      option.textContent = name;
+      activitySelect.appendChild(option);
     });
   }
 
